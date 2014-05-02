@@ -102,7 +102,7 @@
             $.ajax({
                 type: "POST",
                 url: webServiceURL + 'GetPluginDataTable',
-                data: self.dto.dropdownDTO(gridAdminColumn.plugin_id, parameter), //626, "TRV939J00495SZ1, true"
+                data: self.dto.dropdownDTO(gridAdminColumn.plugin_id, parameter), //626, "foo, bar"
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
