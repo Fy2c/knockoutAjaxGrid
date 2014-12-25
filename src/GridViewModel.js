@@ -36,7 +36,7 @@
             currentPage: ko.observable(1) 		//current page number
         };
 
-        var webServiceURL = apiServerURL '/WebService.asmx/';
+        var webServiceURL = apiServerURL + '/WebService.asmx/';
         var checkbox = ko.observable(true);
         var $slider;
 
@@ -50,7 +50,7 @@
         function ajaxGridAdminEvent() {
             $.ajax({
                 type: "POST",
-                url: webServiceURL + 'GetColumnsByUserId',
+                url: apiServerURL + 'GetColumnsByUserId',
                 data: self.dto.gridAdminDTO(),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -69,7 +69,7 @@
             cache = cache || false;
             $.ajax({
                 type: "POST",
-                url: webServiceURL + 'GetDataSource',
+                url: apiServerURL + 'GetDataSource',
                 data: self.dto.dataSourceDTO(currentPage, pageSize, cache),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -102,7 +102,7 @@
             
             $.ajax({
                 type: "POST",
-                url: webServiceURL + 'GetPluginDataTable',
+                url: apiServerURL + 'GetPluginDataTable',
                 data: self.dto.dropdownDTO(gridAdminColumn.plugin_id, parameter), //626, "foo, bar"
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
