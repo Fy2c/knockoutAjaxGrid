@@ -9,9 +9,9 @@ First create a div for the knockout to bind to.
 ```html
     <div id="grid" data-bind="dataTable: {
         gridName: 'grid',
-        pageName: 'text.aspx',
+        pageName: 'text.html',
         pluginID: 523,
-        parameter_list: 'Hello world',
+        parameter_list: 'USD1234',
         checkBoxVisible: 'true' 
       }"></div>
 ```
