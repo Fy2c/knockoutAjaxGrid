@@ -21,13 +21,14 @@
 
         // constructor body
         var self = (this === window) ? {} : this; //we would never want our public object to be global.
-        var url = url || window.location.host;
+        self.url = url || window.location.host;
 
         /** 
          *  @region Private
          *      This existed somewhere in the "void".
          *  =================================================
          **/
+        var apiServerURL  = self.url; 
         var ajaxThreshold = 50;                 //50ms
         var pagingOptions = {
             pageSize: ko.observable(50), 		//Number of record per pageheaderRowBuilder
@@ -35,7 +36,7 @@
             currentPage: ko.observable(1) 		//current page number
         };
 
-        var webServiceURL = vms.sessionHost + '/WebService.asmx/';
+        var webServiceURL = apiServerURL '/WebService.asmx/';
         var checkbox = ko.observable(true);
         var $slider;
 
@@ -54,7 +55,7 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
-                    self.bindGridAdmin(response.d);
+                    self.bindGridAdmin(response);
                 },
                 error: function (response, error) {
                     //error here
@@ -73,7 +74,7 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
-                    response = $.parseJSON(response.d);
+                    response = $.parseJSON(response);
                     self.bindDataSource(response.data);
                     if (pagingOptions.totalCount() !== response.totalCount)
                         pagingOptions.totalCount(response.totalCount);
@@ -106,7 +107,7 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
-                    response = $.parseJSON(response.d);
+                    response = $.parseJSON(response);
                     response = $.parseJSON(response.data);
 
                     if (!ko.isObservable(gridAdminColumn.dataset))
