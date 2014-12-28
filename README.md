@@ -53,14 +53,14 @@ Thsi grid will also support paging
 Ajax grid are design to have all of the config stored within a Database, so we can implement different behaviour for different roles.
 ```javascript
 
-    $('#uwgSizeRun').viewModel().getGridAdmin();
-    $('#uwgSizeRun').viewModel().getDataSource();
+    $('#grid').viewModel().getGridAdmin();
+    $('#grid').viewModel().getDataSource();
     
 ```
 
 Toggle checkbox is as easy as running the following script
 ```javascript
 
-    $('#uwgSizeRun').viewModel().toggleCheckBox();
+    $('#grid').viewModel().toggleCheckBox();
     
 ```
